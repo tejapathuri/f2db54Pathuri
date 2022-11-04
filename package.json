@@ -1,0 +1,18 @@
+{
+  "name": "f2wb54pathuri",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "^4.3.4",
+    "express": "^4.18.2",
+    "http-errors": "^2.0.0",
+    "mangodb": "^1.0.0",
+    "mongoose": "^6.7.1",
+    "morgan": "^1.10.0",
+    "pug": "^3.0.2"
+  }
+}

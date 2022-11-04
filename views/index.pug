@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  
+  input(type="button", class="btn btn-primary" value ="Press Me" onClick = "doBump()")
+
+  <br><br>
+
+  div(id="bump")
+    p Bump the count
+  script.
+    var count=0;
+    var bump=1;
+    function doBump(){
+      count=count+bump; 
+      bump=bump+1;
+      print=document.getElementById("bump");
+      print.innerHTML='Count '+count+' with bump '+bump;
+    }

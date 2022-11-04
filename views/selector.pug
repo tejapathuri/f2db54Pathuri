@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  
+    - var image_names = ["Din1", "Din2", "Din3", "Din4", "Din5"]
+  - for(let i = 0; i < 3; i++) {
+    - let number = Math.floor(Math.random() * 5)
+        img(src=`/images/${image_names[number]}.jpg`, alt="different images every time", height="300px", width="300px")
+  - }
+
+  
