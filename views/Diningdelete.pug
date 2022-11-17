@@ -1,0 +1,54 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  if (toShow == null) 
+    h2 No instance to delete 
+  else 
+    - let Dining_id = toShow._id 
+    - let Dining_style= toShow.Dining_style
+    - let Dining_type = toShow.Dining_type
+    - let Dining_size = toShow.Dining_size 
+    - let actionid = "/resource/Dinings/" + Dining_id 
+    script let actionid = "#{actionid}" 
+    div 
+      div.row 
+        div(class='DiningAttr mr-3') Dining_id is: 
+        div #{Dining_id} 
+      div.row 
+        div(class='DiningAttr mr-3') Dining_style is: 
+        div #{Dining_style} 
+      div.row 
+        div(class='DiningAttr mr-3') Dining_type  is: 
+        div #{Dining_type} 
+      div.row 
+        div(class='DiningnAttr mr-3') Dining_size is: 
+        div #{Dining_size} 
+ 
+    button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete 
+    button(class="btn btn-secondary m-2" onclick="cancel()") Cancel 
+ 
+  script. 
+    function cancel() { 
+      // Go back to the home page for the Dining collection 
+      window.location.href='/Dinnings' 
+    } 
+  script. 
+    function deleteOnid() { 
+      console.log("starting delete") 
+      // delete first 
+      fetch(actionid, { 
+        method: 'DELETE'      //Dont need a body for the delete 
+      }).then((resp) => { 
+        return resp.text(); // or resp.text() or whatever the server sends 
+      }).then((body) => { 
+        alert("Delete succeded") 
+        window.location.href='/Dinings\' 
+        // TODO handle body 
+      }).catch((error) => { 
+        // TODO handle error 
+        alert("Delete failed " + error ) 
+      }); 
+    } 
+    

@@ -1,0 +1,44 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  - let Dining_id = toShow._id 
+  - let Dining_style = toShow.Dining_style
+  - let Dining_type = toShow.Dining_type
+  - let Dining_size= toShow.Dining_size
+   
+  div.row(class='mb-2') 
+    div.mr-1 ID is 
+    div #{Dining_id} 
+  - let actionid = "/resource/Dinings/" + Dining_id 
+  
+   form(id='DiningForm', action=actionid, method="PUT") 
+    div.form-group 
+        label.DiningAttr(for='Dining_style') Dining style
+        input#Dining_style(type='text', name='Dining_style',value= Dining_style) 
+    div.form-group 
+        label.DiningAttr(for='Dining_type') Dining type
+        input#type(type='text', name='type',value= Dining_type) 
+    div.form-group 
+        label.DiningAttr(for='Dining_size') Dining size
+        input#size(type='text', name='size',value= Dining_size) 
+    input(type="submit") 
+ 
+  script. 
+    document.forms['DiningForm'].addEventListener('submit', (event) => { 
+      event.preventDefault(); 
+      // TODO do something here to show user that form is being submitted 
+      fetch(event.target.action, { 
+        method: 'PUT', 
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form 
+      }).then((resp) => { 
+        return resp.text(); // or resp.text() or whatever the server sends 
+      }).then((body) => { 
+        alert("Update succeded") 
+        // TODO handle body 
+      }).catch((error) => { 
+        // TODO handle error 
+        alert("Update failed " + error ) 
+      }); 
+    }); 

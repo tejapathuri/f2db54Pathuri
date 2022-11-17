@@ -1,0 +1,22 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  - let Diningid = toShow._id 
+  - let Dining_style= toShow.Dining_style
+  - let Dining_type = toShow.Dining_type
+  - let Dining_size = toShow.Dining_size
+  div 
+    div.row 
+      div(class='DiningAttr mr-3') Dining ID is: 
+      div #{Diningid} 
+    div.row 
+      div(class='DiningAttr mr-3') Dining Type is: 
+      div #{Dining_style} 
+    div.row 
+      div(class='DiningAttr mr-3') Dining Size is: 
+      div #{Dining_size} 
+    div.row 
+      div(class='DiningAttr mr-3') Dining Cost is: 
+      div #{Dining_type} 
