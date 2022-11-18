@@ -102,10 +102,10 @@ exports.Dining_delete = async function(req, res) {
     } 
 }; 
 //views
-exports.flim_view_all_Page = async function (req, res) {
+exports.Dining_view_all_Page = async function (req, res) {
     try {
         theDinings = await Dining.find();
-        res.render('Dinings', { title: 'Dining Search Results', results: theDinings });
+        res.render('Dining', { title: 'Dining Search Results', results: theDinings });
     }
     catch (err) {
         res.status(500);

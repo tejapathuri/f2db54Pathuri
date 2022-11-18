@@ -3,12 +3,21 @@ extends layout
 block content
   h1= title
   p Welcome to #{title} 
-  - var result = [{"Dining_style":"Square","Dining_type":"Rose Wood","Dining_size":7},{"Dining_style":"Rectangle","Dining_type":"Iron","Dining_size":7},{"Dining_style":"Box","Dining_type":"Fiber wood","Dining_size":19}]
-  div.container-fluid
-     div.row
-        each item,index in result
-            div.col-sm-2(onclick=`buy(${index})`) Dining style: #{item["Dining_style"]}  <br>  Dining type: #{item["Dining_type"]} <br> Dining size: #{item["Dining_size"]} 
+
+  div(class="container-fluid")
+     div(class="row m-1")
+        each item,index in results
+            - let destination = `dispatch(\"/Dining/update?id=${item._id}\")`
+            div.col-sm-2(onclick=`buy(${index})`) Dining Style: #{item["Dining_style"]}  <br>  Dining Type: #{item["Dining_type"]} <br> Dining Size: #{item["Dining_size"]}
+            button.btn( class="btn-primary ml-1", onclick= destination) Update 
+
+   
   script.
-      function buy(index){
-         alert("you purchased item "+(index+1))
-      }
+    function buy(index){
+      alert("you purchased item "+(index+1))
+    }
+
+  script. 
+    function dispatch(path){ 
+      window.location.href=path 
+    }
